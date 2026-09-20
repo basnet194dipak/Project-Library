@@ -11,6 +11,16 @@ function Book(title, author, pages, read) {
     this.read = read
 }
 
+// toogle read
+Book.prototype.toggle_read = function () {
+    if (this.read === true) {
+        this.read = false;
+    }
+    else {
+        this.read = true;
+    }
+}
+
 function addBookToLibrary(title, author, pages, read = true) {
     if (typeof pages !== "number" || Number.isNaN(pages)) {
         throw new TypeError("Pages must be a valid number");
@@ -24,31 +34,59 @@ function addBookToLibrary(title, author, pages, read = true) {
     myLibrary.push(book)
 }
 
+// 
+
 addBookToLibrary("Think Fast and Slow", "J.R.R. Tolkien", 310, true);
 addBookToLibrary("You can Win", "J.R.R. Tolkien", 320, false);
 addBookToLibrary("Think and Grow Rich", "J.R.R. Tolkien", 330, true);
 addBookToLibrary("How to influence people and win friends", "J.R.R. Tolkien", 310, true);
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, false);
 
-// loop through the mylibrary
-document.addEventListener("DOMContentLoaded", function () {
-    let library = document.querySelector(".library")
-    for (let i = 0; i < myLibrary.length; i++) {
-        let book = myLibrary[i]
-        let display_book = document.createElement("div")
+
+// add ui 
+function display_books(book, library) {
+    let display_book = document.createElement("div")
+    if (book.read == true) {
+        read = "read"
+    }
+    else {
+        read = "not read"
+    }
+    display_book.setAttribute("class", "book")
+    display_book.setAttribute("id", book["id"])
+    display_book.innerText = `id:${book["id"]}
+                                title:${book["title"]}
+                                author:${book["author"]}
+                                pages:${book["pages"]}
+                                read:${read}`
+    let reading = document.createElement("button")
+    reading.innerText = "toggle_read"
+    reading.setAttribute("class", `toggle_reading`)
+    reading.addEventListener("click", () => {
+        book.toggle_read()
+        // display_book.parentNode.removeChild(display_book)
         if (book.read == true) {
             read = "read"
         }
         else {
             read = "not read"
         }
-        display_book.setAttribute("class", "book")
         display_book.innerText = `id:${book["id"]}
                                 title:${book["title"]}
                                 author:${book["author"]}
                                 pages:${book["pages"]}
                                 read:${read}`
+        display_book.appendChild(reading)
+    })
+    display_book.appendChild(reading)
+    library.appendChild(display_book)
+}
 
-        library.appendChild(display_book)
+// loop through the mylibrary
+document.addEventListener("DOMContentLoaded", function () {
+    let library = document.querySelector(".library")
+    for (let i = 0; i < myLibrary.length; i++) {
+        let book = myLibrary[i]
+        display_books(book, library)
     }
 })
