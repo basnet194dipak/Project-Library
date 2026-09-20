@@ -1,4 +1,24 @@
 .library {
     display: flex;
+}
 
+.add_book {
+    background-color: blue;
+    color: white;
+    padding: 20px;
+    display: flex;
+    /* justify-content: end; */
+}
+
+button,
+#add_book {
+    border-radius: 20px;
+    padding: 20px;
+}
+
+#forms {
+    border: 2px solid green;
+    padding: 20px;
+    border-radius: 20px;
+    visibility: hidden;
 }

@@ -21,6 +21,15 @@ Book.prototype.toggle_read = function () {
     }
 }
 
+// delete book
+function delete_book(id) {
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i]["id"] == id) {
+            myLibrary.splice(i, 1)
+        }
+    }
+}
+
 function addBookToLibrary(title, author, pages, read = true) {
     if (typeof pages !== "number" || Number.isNaN(pages)) {
         throw new TypeError("Pages must be a valid number");
@@ -59,6 +68,8 @@ function display_books(book, library) {
                                 author:${book["author"]}
                                 pages:${book["pages"]}
                                 read:${read}`
+
+    // change the reading status of a book
     let reading = document.createElement("button")
     reading.innerText = "toggle_read"
     reading.setAttribute("class", `toggle_reading`)
@@ -77,8 +88,19 @@ function display_books(book, library) {
                                 pages:${book["pages"]}
                                 read:${read}`
         display_book.appendChild(reading)
+        display_book.appendChild(delete_books)
+    })
+
+    // delete the book
+    let delete_books = document.createElement("button")
+    delete_books.innerText = "Delete Book"
+    delete_books.addEventListener("click", () => {
+        delete_book(book["id"])
+        console.log(myLibrary)
+        display_book.parentNode.removeChild(display_book)
     })
     display_book.appendChild(reading)
+    display_book.appendChild(delete_books)
     library.appendChild(display_book)
 }
 
@@ -89,4 +111,15 @@ document.addEventListener("DOMContentLoaded", function () {
         let book = myLibrary[i]
         display_books(book, library)
     }
+})
+
+
+let add_book = document.querySelector("#add_book")
+add_book.addEventListener("click", () => {
+    let form = document.querySelector("#forms")
+    form.style.visibility = "visible"
+    let cancel = document.querySelector("#cancel")
+    cancel.addEventListener("click", () => {
+        form.style.visibility = 'hidden'
+    })
 })
