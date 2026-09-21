@@ -123,3 +123,19 @@ add_book.addEventListener("click", () => {
         form.style.visibility = 'hidden'
     })
 })
+
+// add book
+let fourm = document.querySelector("form")
+fourm.addEventListener("submit", (event) => {
+    event.preventDefault()
+    let title = document.querySelector("#title").value;
+    let author = document.querySelector("#author").value;
+    let pages = Number(document.querySelector("#pages").value);
+    let read = document.querySelector("#read").checked;
+    console.log(read)
+
+    addBookToLibrary(title, author, pages, read)
+    let library = document.querySelector(".library")
+    // let book = new Book(title,author,pages,read)
+    display_books(myLibrary.at(-1), library)
+})
