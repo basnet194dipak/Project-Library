@@ -44,14 +44,6 @@ function addBookToLibrary(title, author, pages, read = true) {
     myLibrary.push(book)
 }
 
-// 
-
-addBookToLibrary("Think Fast and Slow", "J.R.R. Tolkien", 310, true);
-addBookToLibrary("You can Win", "J.R.R. Tolkien", 320, false);
-addBookToLibrary("Think and Grow Rich", "J.R.R. Tolkien", 330, true);
-addBookToLibrary("How to influence people and win friends", "J.R.R. Tolkien", 310, true);
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, false);
-
 
 // add ui 
 function display_books(book, library) {
