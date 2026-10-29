@@ -32,15 +32,21 @@
     grid-template-columns: repeat(4, 1fr);
 }
 
-.add_book {
+.add_bookss {
     background-color: blue;
     color: white;
     padding: 20px;
     border-radius: 11px;
     display: flex;
     flex-direction: column;
-    width: 10%;
+    justify-content: center;
+    align-items: center;
 
+}
+
+.add_bookss > button
+{
+    width: 40%;
 }
 
 button,
@@ -54,19 +60,19 @@ button,
     padding: 20px;
     border-radius: 20px;
     visibility: hidden;
-    /* display: flex;
+    display: flex;
     flex-direction: column;
     margin-top: 2%;
     align-items: center;
     justify-content: center;
-    width: 70%; */
+    width: 70%; 
 }
 
 #main_container{
     display: flex;
     padding: 2%;
-    justify-content:flex-end;
-    align-items: center;
+    justify-content:space-between;
+    /* align-items: center; */
 }
 
 .book{
@@ -76,4 +82,108 @@ button,
     text-align: center;
     border-radius: 11px;
 
+}
+
+
+
+/* Make the header a little cleaner */
+.heading {
+    padding-bottom: 10px;
+}
+
+/* Improve the Add Book section */
+.add_bookss {
+    background-color: #3b5998;
+    padding: 25px;
+}
+
+/* Keep the library cards simple */
+.book {
+    background-color: #e8f4f8;
+    margin: 10px;
+    padding: 20px;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+#forms {
+    gap: 12px;
+}
+
+.library
+{
+    padding-top: 0%;
+    border-radius: 12px;
+    border-color: aqua;
+}
+
+
+
+/* Improve spacing between book cards */
+.library {
+    gap: 12px;
+    padding: 10px;
+}
+
+/* Make book information easier to read */
+.book {
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+/* Style the buttons inside each book card */
+.book button {
+    padding: 10px;
+    margin: 5px 3px;
+    border: none;
+    background-color: #ffffff;
+}
+
+/* Small hover effect for book buttons */
+.book button:hover {
+    background-color: #d6eeee;
+}
+
+/* Improve the form labels */
+#forms label {
+    margin: 5px 0;
+}
+
+/* Separate the form controls slightly */
+#controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+
+
+.library {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: start;
+    gap: 12px;
+}
+
+.book {
+    box-sizing: border-box;
+    min-width: 0;
+    padding: 15px;
+    margin: 0;
+    background-color: lightsteelblue;
+    text-align: left;
+    border-radius: 11px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.book button {
+    padding: 8px 10px;
+    margin: 5px 2px;
+    border-radius: 10px;
 }

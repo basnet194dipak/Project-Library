@@ -9,40 +9,48 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="heading">
-            <h1>Library</h1>
+    <div class="heading">
+        <div class="logoss">
+            <div class="mini_logo">
+                <img id="book_logo" src="OIP.jpg" alt="book_logo">
+                <h1> My Library</h1>
+            </div>
+            
         </div>
-
-        <div class="library">
-        </div>
+        <h3>Dipak</h3>
     </div>
+    <div id="main_container">
+        <div id="foot">
+            <div class="add_bookss">
+                <button id="add_book">Add Book</button>
+                <div class="forming">
+                    <form id="forms" action="">
 
-    <footer>
-        <div class="add_book">
-            <button id="add_book">Add Book</button>
-            <div class="forming">
-                <form id="forms" action="">
+                        <label for="title">Title: <input type="text" id="title" name="title" required> </label>
+                        
 
-                    <label for="title">Title: <input type="text" id="title" name="title" required> </label>
-                    
+                        <label for="author">Author: <input type="text" id="author" name="author" required></label>
+                        
 
-                    <label for="author">Author: <input type="text" id="author" name="author" required></label>
-                    
+                        <label for="pages">Pages: <input type="number" id="pages" name="pages" min="1" required></label>
+                        
 
-                    <label for="pages">Pages: <input type="number" id="pages" name="pages" min="1" required></label>
-                    
-
-                    <label for="read">Have you read it? <input type="checkbox" id="read" name="read"> </label>
-                    
-                    <div id="controls">
-                        <button type="submit">Submit</button>
-                        <button type="button" id="cancel">Cancel</button>
-                    </div>
-                </form>
+                        <label for="read">Have you read it? <input type="checkbox" id="read" name="read"> </label>
+                        
+                        <div id="controls">
+                            <button type="submit">Submit</button>
+                            <button type="button" id="cancel">Cancel</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </footer>
+        
+            
+        <div class="library">
+        </div>
+        
+    </div>
 </body>
 
 </html>
