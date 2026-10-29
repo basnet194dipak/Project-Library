@@ -1,13 +1,13 @@
 .library {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .add_book {
     background-color: blue;
     color: white;
     padding: 20px;
-    display: flex;
-    /* justify-content: end; */
+    /* display: flex; */
 }
 
 button,
@@ -21,4 +21,10 @@ button,
     padding: 20px;
     border-radius: 20px;
     visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
 }
