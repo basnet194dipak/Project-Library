@@ -25,7 +25,8 @@ Book.prototype.toggle_read = function () {
 function delete_book(id) {
     for (let i = 0; i < myLibrary.length; i++) {
         if (myLibrary[i]["id"] == id) {
-            myLibrary.splice(i, 1)
+            myLibrary.splice(i, 1);
+            return;
         }
     }
 }
