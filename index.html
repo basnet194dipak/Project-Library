@@ -1,57 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
+  <body>
     <div class="heading">
-        <div class="logoss">
-            <div class="mini_logo">
-                <img id="book_logo" src="OIP.jpg" alt="book_logo">
-                <h1> My Library</h1>
-            </div>
-            
+      <div class="logoss">
+        <div class="mini_logo">
+          <img id="book_logo" src="OIP.jpg" alt="book_logo" />
+          <h1>My Library</h1>
         </div>
-        <h3>Dipak</h3>
+      </div>
+      <h3>Dipak</h3>
     </div>
     <div id="main_container">
-        <div id="foot">
-            <div class="add_bookss">
-                <button id="add_book">Add Book</button>
-                <div class="forming">
-                    <form id="forms" action="">
+      <div id="foot">
+        <div class="add_bookss">
+          <button id="add_book">Add Book</button>
+          <div class="forming">
+            <form id="forms" action="">
+              <label for="title"
+                >Title: <input type="text" id="title" name="title" required />
+              </label>
 
-                        <label for="title">Title: <input type="text" id="title" name="title" required> </label>
-                        
+              <label for="author"
+                >Author: <input type="text" id="author" name="author" required
+              /></label>
 
-                        <label for="author">Author: <input type="text" id="author" name="author" required></label>
-                        
+              <label for="pages"
+                >Pages:
+                <input type="number" id="pages" name="pages" min="1" required
+              /></label>
 
-                        <label for="pages">Pages: <input type="number" id="pages" name="pages" min="1" required></label>
-                        
+              <label for="read"
+                >Have you read it?
+                <input type="checkbox" id="read" name="read" />
+              </label>
 
-                        <label for="read">Have you read it? <input type="checkbox" id="read" name="read"> </label>
-                        
-                        <div id="controls">
-                            <button type="submit">Submit</button>
-                            <button type="button" id="cancel">Cancel</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+              <div id="controls">
+                <button type="submit">Submit</button>
+                <button type="button" id="cancel">Cancel</button>
+              </div>
+            </form>
+          </div>
         </div>
-        
-            
-        <div class="library">
-        </div>
-        
+      </div>
+
+      <div class="library"></div>
     </div>
-</body>
-
+  </body>
 </html>
 <script src="index.js"></script>
