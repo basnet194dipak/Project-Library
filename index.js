@@ -109,6 +109,7 @@ add_book.addEventListener("click", () => {
   let cancel = document.querySelector("#cancel");
   cancel.addEventListener("click", () => {
     form.style.visibility = "hidden";
+    form.reset();
   });
 });
 
