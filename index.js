@@ -1,47 +1,60 @@
-const myLibrary = [];
-
-function Book(title, author, pages, read) {
-  if (!new.target) {
-    throw Error("You must use the 'new' operator to call the constructor");
+class Book{
+  constructor(title, author, pages, read)
+  {
+    this.id = crypto.randomUUID();
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
   }
-  this.id = crypto.randomUUID();
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+
+    toggle_read()
+    {
+      if (this.read === true) 
+        {
+          this.read = false;
+        } 
+      else 
+        {
+          this.read = true;
+        }
+    }
+
 }
 
-// toogle read
-Book.prototype.toggle_read = function () {
-  if (this.read === true) {
-    this.read = false;
-  } else {
-    this.read = true;
+class Library{
+  constructor()
+  {
+    this.myLibrary = []
   }
-};
 
-// delete book
-function delete_book(id) {
-  for (let i = 0; i < myLibrary.length; i++) {
-    if (myLibrary[i]["id"] == id) {
-      myLibrary.splice(i, 1);
-      return;
+  addBookToLibrary(title, author, pages, read = true) 
+  {
+    if (typeof pages !== "number" || Number.isNaN(pages)) {
+      throw new TypeError("Pages must be a valid number");
+    }
+
+    if (typeof read !== "boolean") {
+      throw new TypeError("read must be a valid number");
+    }
+
+    let book = new Book(title, author, pages, read);
+    this.myLibrary.push(book);
+  }
+
+  delete_book(id) 
+  {
+    for (let i = 0; i < this.myLibrary.length; i++) {
+      if (this.myLibrary[i]["id"] == id) {
+        this.myLibrary.splice(i, 1);
+        return;
+      }
     }
   }
+
 }
 
-function addBookToLibrary(title, author, pages, read = true) {
-  if (typeof pages !== "number" || Number.isNaN(pages)) {
-    throw new TypeError("Pages must be a valid number");
-  }
 
-  if (typeof read !== "boolean") {
-    throw new TypeError("read must be a valid number");
-  }
-
-  let book = new Book(title, author, pages, read);
-  myLibrary.push(book);
-}
 
 // add ui
 function display_books(book, library) {
@@ -52,11 +65,11 @@ function display_books(book, library) {
     read = "not read";
   }
   display_book.setAttribute("class", "book");
-  display_book.setAttribute("id", book["id"]);
-  display_book.innerText = `id:${book["id"]}
-                                title:${book["title"]}
-                                author:${book["author"]}
-                                pages:${book["pages"]}
+  display_book.setAttribute("id", book.id);
+  display_book.innerText = `id:${book.id}
+                                title:${book.title}
+                                author:${book.author}
+                                pages:${book.pages}
                                 read:${read}`;
 
   // change the reading status of a book
@@ -71,10 +84,10 @@ function display_books(book, library) {
     } else {
       read = "not read";
     }
-    display_book.innerText = `id:${book["id"]}
-                                title:${book["title"]}
-                                author:${book["author"]}
-                                pages:${book["pages"]}
+    display_book.innerText = `id:${book.id}
+                                title:${book.title}
+                                author:${book.author}
+                                pages:${book.pages}
                                 read:${read}`;
     display_book.appendChild(reading);
     display_book.appendChild(delete_books);
@@ -84,8 +97,8 @@ function display_books(book, library) {
   let delete_books = document.createElement("button");
   delete_books.innerText = "Delete Book";
   delete_books.addEventListener("click", () => {
-    delete_book(book["id"]);
-    console.log(myLibrary);
+    new_library.delete_book(book.id);
+    console.log(new_library.myLibrary);
     display_book.parentNode.removeChild(display_book);
   });
   display_book.appendChild(reading);
@@ -96,8 +109,8 @@ function display_books(book, library) {
 // loop through the mylibrary
 document.addEventListener("DOMContentLoaded", function () {
   let library = document.querySelector(".library");
-  for (let i = 0; i < myLibrary.length; i++) {
-    let book = myLibrary[i];
+  for (let i = 0; i < new_library.myLibrary.length; i++) {
+    let book = new_library.myLibrary[i];
     display_books(book, library);
   }
 });
@@ -113,6 +126,9 @@ add_book.addEventListener("click", () => {
   });
 });
 
+// initialize the library
+
+let new_library = new Library
 // add book
 let fourm = document.querySelector("form");
 fourm.addEventListener("submit", (event) => {
@@ -121,10 +137,11 @@ fourm.addEventListener("submit", (event) => {
   let author = document.querySelector("#author").value;
   let pages = Number(document.querySelector("#pages").value);
   let read = document.querySelector("#read").checked;
-  console.log(read);
 
-  addBookToLibrary(title, author, pages, read);
+  new_library.addBookToLibrary(title, author, pages, read);
   let library = document.querySelector(".library");
+
+  console.log(new_library.myLibrary)
   // let book = new Book(title,author,pages,read)
-  display_books(myLibrary.at(-1), library);
+  display_books(new_library.myLibrary.at(-1), library);
 });
